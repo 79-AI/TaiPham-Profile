@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phạm Tấn Tài — Tyler | Personal Profile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#1c3a2e;
+    --forest-deep:#13271f;
+    --moss:#2e7d52;
+    --sage:#7fa68c;
+    --coral:#e8472a;
+    --gold:#c9a24b;
+    --cream:#f6f1e7;
+    --sand:#ece3d2;
+    --ink:#22291f;
+    --muted:#6d7a6b;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Be Vietnam Pro',sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .serif{font-family:'Cormorant Garamond',serif}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100vh;display:flex;align-items:center;
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(201,162,75,.18), transparent 60%),
+      linear-gradient(160deg,var(--forest) 0%, var(--forest-deep) 100%);
+    color:var(--cream);overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
+    background-size:26px 26px;opacity:.6;
+  }
+  .hero-inner{position:relative;display:grid;grid-template-columns:1.3fr .9fr;gap:54px;align-items:center;width:100%}
+  .eyebrow{
+    letter-spacing:.42em;text-transform:uppercase;font-size:.72rem;font-weight:600;
+    color:var(--gold);margin-bottom:22px;
+  }
+  .hero h1{
+    font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-size:clamp(3.2rem,7vw,6rem);line-height:1.02;letter-spacing:.5px;
+  }
+  .hero h1 .en{display:block;font-style:italic;font-size:.5em;color:var(--sage);font-weight:500;margin-top:6px}
+  .hero .tag{
+    margin-top:26px;max-width:430px;font-size:1.06rem;color:rgba(246,241,231,.82);font-weight:300;
+    border-left:2px solid var(--gold);padding-left:18px;
+  }
+  .hero-meta{margin-top:34px;display:flex;gap:30px;flex-wrap:wrap;font-size:.9rem;color:var(--sage)}
+  .hero-meta b{display:block;color:var(--cream);font-weight:500;font-size:1.02rem}
+
+  /* photo frame */
+  .portrait{
+    position:relative;aspect-ratio:3/4;border-radius:8px;overflow:hidden;
+    box-shadow:0 30px 70px rgba(0,0,0,.45);border:1px solid rgba(201,162,75,.4);
+  }
+  .portrait img{width:100%;height:100%;object-fit:cover;display:block}
+  .portrait .ph{
+    position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+    background:linear-gradient(150deg,#234b3a,#16302480);color:var(--sage);text-align:center;padding:20px;
+  }
+  .portrait .ph .mono{font-family:'Cormorant Garamond',serif;font-size:4rem;color:var(--gold);line-height:1}
+  .portrait .ph small{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
+  .scroll-cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);color:var(--sage);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;animation:bob 2.4s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translate(-50%,0);opacity:.7}50%{transform:translate(-50%,8px);opacity:1}}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:92px 0}
+  .lead-label{
+    display:inline-block;letter-spacing:.32em;text-transform:uppercase;font-size:.7rem;font-weight:600;
+    color:var(--moss);margin-bottom:16px;
+  }
+  h2.section-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(2.1rem,4vw,3rem);color:var(--forest);line-height:1.1;margin-bottom:8px}
+  .section-sub{color:var(--muted);max-width:640px;font-weight:300;margin-bottom:42px}
+
+  .intro{background:var(--cream)}
+  .intro p{font-size:1.18rem;font-weight:300;color:#3a4438;max-width:780px}
+  .intro p .em{color:var(--moss);font-weight:500}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:54px}
+  .stat{background:#fff;border:1px solid var(--sand);border-radius:12px;padding:26px 22px;text-align:center;box-shadow:0 8px 30px rgba(28,58,46,.05)}
+  .stat .num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:var(--moss);line-height:1}
+  .stat .lbl{font-size:.82rem;color:var(--muted);margin-top:8px}
+
+  /* timeline */
+  .timeline{background:linear-gradient(180deg,var(--sand),var(--cream))}
+  .tl{position:relative;margin-top:20px;padding-left:34px}
+  .tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--moss),var(--sage))}
+  .tl-item{position:relative;padding:0 0 38px 0}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{content:"";position:absolute;left:-34px;top:5px;width:16px;height:16px;border-radius:50%;background:var(--cream);border:3px solid var(--moss)}
+  .tl-item .yr{font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--coral);font-size:1.15rem}
+  .tl-item h4{font-size:1.05rem;color:var(--forest);margin:2px 0 4px}
+  .tl-item p{color:var(--muted);font-weight:300;font-size:.96rem}
+
+  /* values grid */
+  .values{background:var(--forest);color:var(--cream)}
+  .values .lead-label{color:var(--gold)}
+  .values h2.section-title{color:var(--cream)}
+  .vquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.6rem,3.4vw,2.5rem);line-height:1.35;color:var(--cream);max-width:880px;margin-bottom:48px}
+  .vquote span{color:var(--gold)}
+  .vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .vcard{background:rgba(255,255,255,.05);border:1px solid rgba(201,162,75,.25);border-radius:12px;padding:26px}
+  .vcard .ic{font-size:1.6rem;margin-bottom:12px}
+  .vcard h5{font-size:1.02rem;color:var(--gold);margin-bottom:8px;font-weight:600}
+  .vcard p{font-size:.92rem;color:rgba(246,241,231,.78);font-weight:300}
+
+  /* passions / interests */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:54px}
+  .chip-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .chip{background:#fff;border:1px solid var(--sand);color:var(--forest);padding:9px 16px;border-radius:50px;font-size:.88rem;font-weight:500;box-shadow:0 4px 14px rgba(28,58,46,.04)}
+  .chip.moss{background:var(--moss);color:#fff;border-color:var(--moss)}
+  .feat-list{list-style:none;margin-top:8px}
+  .feat-list li{padding:14px 0;border-bottom:1px solid var(--sand);display:flex;gap:14px;align-items:flex-start}
+  .feat-list li:last-child{border-bottom:none}
+  .feat-list .b{color:var(--coral);font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.3rem;line-height:1}
+  .feat-list h5{font-size:1rem;color:var(--forest)}
+  .feat-list p{font-size:.9rem;color:var(--muted);font-weight:300}
+
+  /* aspiration banner */
+  .aspire{background:linear-gradient(135deg,var(--moss),var(--forest-deep));color:var(--cream);text-align:center}
+  .aspire .big{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,9vw,7rem);font-weight:700;color:var(--gold);line-height:1}
+  .aspire p{max-width:560px;margin:18px auto 0;font-weight:300;color:rgba(246,241,231,.85);font-size:1.1rem}
+
+  /* family */
+  .family{background:var(--cream)}
+  .fam-grid{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center}
+  .fam-photo{aspect-ratio:4/3;border-radius:14px;overflow:hidden;box-shadow:0 24px 60px rgba(28,58,46,.18);border:1px solid var(--sand)}
+  .fam-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .fam-photo .ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(150deg,#e7ddc9,#d8cbb0);color:var(--moss);font-family:'Cormorant Garamond',serif;font-size:1.2rem;text-align:center;padding:24px}
+  .fam-card{padding:18px 0}
+  .fam-card .who{margin-bottom:20px}
+  .fam-card .who b{display:block;font-size:1.05rem;color:var(--forest)}
+  .fam-card .who span{font-size:.9rem;color:var(--muted)}
+
+  /* footer */
+  footer{background:var(--forest-deep);color:var(--sage);text-align:center;padding:54px 28px}
+  footer .name{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--cream)}
+  footer .ph{font-size:.85rem;margin-top:8px}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:860px){
+    .hero-inner{grid-template-columns:1fr;gap:40px;padding:90px 0 70px}
+    .portrait{max-width:300px}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .vgrid{grid-template-columns:1fr}
+    .two-col,.fam-grid{grid-template-columns:1fr;gap:34px}
+    section{padding:64px 0}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow">Personal Profile</div>
+      <h1 class="serif">Phạm Tấn Tài<span class="en">“Tyler”</span></h1>
+      <p class="tag">“Hãy luôn cho đi trước khi nhận — sống để tạo ra giá trị cho mình, cho người xung quanh và cho cộng đồng.”</p>
+      <div class="hero-meta">
+        <div><span>Sinh năm</span><b>02 · 01 · 1989</b></div>
+        <div><span>Quê quán</span><b>Châu Đốc, An Giang</b></div>
+        <div><span>Lĩnh vực</span><b>Du lịch · Đào tạo · AI</b></div>
+      </div>
+    </div>
+    <div class="portrait">
+      <img src="profile.jpg" alt="Phạm Tấn Tài" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="ph" style="display:none">
+        <div class="mono">PT</div>
+        <small>Thả ảnh<br>profile.jpg vào thư mục</small>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue">scroll</div>
+</header>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="wrap reveal">
+    <span class="lead-label">Giới thiệu</span>
+    <h2 class="section-title serif">Người kiến tạo hệ thống &<br>nuôi dưỡng con người</h2>
+    <p>Từ một hướng dẫn viên trên dòng Mekong đến <span class="em">Giám đốc Chi nhánh</span> dẫn dắt đội ngũ 19 người, hành trình của Tài là câu chuyện của sự bền bỉ, ham học hỏi và khát vọng lớn. Anh tin rằng <span class="em">gia đình là nền tảng</span>, con người là trung tâm, và công nghệ — đặc biệt là AI và các mô hình tự vận hành — là đòn bẩy để tạo ra giá trị vượt trội.</p>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="padding-top:0">
+  <div class="wrap reveal">
+    <div class="stats">
+      <div class="stat"><div class="num">19</div><div class="lbl">Nhân sự gây dựng từ con số 3</div></div>
+      <div class="stat"><div class="num">10+</div><div class="lbl">Năm trong ngành du lịch</div></div>
+      <div class="stat"><div class="num">#1</div><div class="lbl">Thủ khoa Thạc sĩ tốt nghiệp</div></div>
+      <div class="stat"><div class="num">$1B</div><div class="lbl">Khát vọng giá trị hướng tới</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline">
+  <div class="wrap reveal">
+    <span class="lead-label">Hành trình</span>
+    <h2 class="section-title serif">Từng bước dựng nên</h2>
+    <p class="section-sub">Một lộ trình kiên định: học sâu, làm thật, và xây dựng đội ngũ.</p>
+    <div class="tl">
+      <div class="tl-item"><div class="yr">2004 – 2007</div><h4>THPT Thủ Khoa Nghĩa — Châu Đốc</h4><p>Những năm phổ thông tại quê hương An Giang.</p></div>
+      <div class="tl-item"><div class="yr">2007 – 2011</div><h4>Cử nhân Sư phạm Tiếng Anh — Đại học An Giang</h4><p>Nền tảng ngôn ngữ và sư phạm.</p></div>
+      <div class="tl-item"><div class="yr">2011</div><h4>Nghĩa vụ quân sự — 6 tháng</h4><p>Rèn luyện kỷ luật và bản lĩnh.</p></div>
+      <div class="tl-item"><div class="yr">~2012</div><h4>Du thuyền Mekong Eyes — Cần Thơ</h4><p>Một năm gắn bó với dòng sông và nghề du lịch.</p></div>
+      <div class="tl-item"><div class="yr">2013</div><h4>Lên Sài Gòn — Hướng dẫn viên du lịch</h4><p>Bước ngoặt khởi đầu sự nghiệp tại thành phố.</p></div>
+      <div class="tl-item"><div class="yr">2015</div><h4>HDV chính → Quản lý phòng Sales — In Country Tours</h4><p>Sau một năm làm HDV chính, chuyển sang dẫn dắt đội kinh doanh.</p></div>
+      <div class="tl-item"><div class="yr">2015 – 2018</div><h4>Thạc sĩ PP Giảng dạy Tiếng Anh — ĐH Mở TP.HCM</h4><p>Tốt nghiệp đứng nhất lớp.</p></div>
+      <div class="tl-item"><div class="yr">2018 – 2026</div><h4>Giám đốc Chi nhánh — In Country Tours</h4><p>Xây chi nhánh Long Xuyên từ 3 người (2019) lên 19 nhân sự (2026).</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="wrap reveal">
+    <span class="lead-label">Giá trị sống</span>
+    <p class="vquote serif">“Luôn <span>cho đi trước khi nhận</span>. Sống để tạo ra giá trị cho mình, cho người xung quanh và cho cộng đồng.”</p>
+    <div class="vgrid">
+      <div class="vcard"><div class="ic">🤝</div><h5>Cho đi & Kết nối</h5><p>Thích chia sẻ, kết nối con người và lan tỏa giá trị tới cộng đồng.</p></div>
+      <div class="vcard"><div class="ic">📚</div><h5>Học hỏi không ngừng</h5><p>Tinh thần ham học hỏi, luôn cập nhật và hoàn thiện bản thân mỗi ngày.</p></div>
+      <div class="vcard"><div class="ic">🏡</div><h5>Gia đình là nền tảng</h5><p>Đặt gia đình làm gốc rễ cho mọi nỗ lực và khát vọng.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PASSIONS + INTERESTS -->
+<section>
+  <div class="wrap reveal">
+    <div class="two-col">
+      <div>
+        <span class="lead-label">Thế mạnh & Đam mê</span>
+        <h2 class="section-title serif">Điều khiến Tài bừng cháy</h2>
+        <ul class="feat-list">
+          <li><span class="b">01</span><div><h5>Xây dựng hệ thống, mô hình & chiến lược</h5><p>Tư duy tổ chức, thiết kế quy trình và mô hình vận hành.</p></div></li>
+          <li><span class="b">02</span><div><h5>Đào tạo & phát triển con người</h5><p>Nuôi dưỡng đội ngũ, truyền cảm hứng và kiến thức.</p></div></li>
+          <li><span class="b">03</span><div><h5>AI & mô hình tự vận hành</h5><p>Nghiên cứu công nghệ và automation để nhân giá trị.</p></div></li>
+        </ul>
+      </div>
+      <div>
+        <span class="lead-label">Sở thích</span>
+        <h2 class="section-title serif">Ngoài giờ làm việc</h2>
+        <p class="section-sub" style="margin-bottom:8px">Một tâm hồn yêu thiên nhiên và thích khám phá.</p>
+        <div class="chip-row">
+          <span class="chip moss">Bơi lội</span>
+          <span class="chip moss">Đi bộ</span>
+          <span class="chip moss">Chạy bộ</span>
+          <span class="chip moss">Trekking</span>
+          <span class="chip moss">Leo núi</span>
+          <span class="chip">Khám phá rừng núi</span>
+          <span class="chip">Yêu thiên nhiên</span>
+          <span class="chip">Shark Tank VN & thế giới</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ASPIRATION -->
+<section class="aspire">
+  <div class="wrap reveal">
+    <span class="lead-label" style="color:var(--gold)">Khát vọng</span>
+    <div class="big serif">1 tỉ đô la</div>
+    <p>Một khát khao lớn — không chỉ là con số, mà là thước đo của giá trị tạo ra cho bản thân, đội ngũ và cộng đồng.</p>
+  </div>
+</section>
+
+<!-- FAMILY -->
+<section class="family">
+  <div class="wrap reveal">
+    <span class="lead-label">Gia đình</span>
+    <h2 class="section-title serif">Nền tảng của mọi hành trình</h2>
+    <div class="fam-grid" style="margin-top:34px">
+      <div class="fam-photo">
+        <img src="family.jpg" alt="Gia đình Tài" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="ph" style="display:none">Thả ảnh <b style="margin:0 4px">family.jpg</b> vào thư mục để hiển thị</div>
+      </div>
+      <div class="fam-card">
+        <div class="who"><b>Nguyễn Thị Ngọc Giàu</b><span>Vợ — Giáo viên Tiếng Anh</span></div>
+        <div class="who"><b>Phạm Đăng Khôi “Lucas”</b><span>Con trai — 6 tuổi</span></div>
+        <p style="color:var(--muted);font-weight:300">Với Tài, mỗi thành tựu đều bắt đầu và quay về từ tổ ấm — nơi tiếp thêm động lực cho những khát vọng lớn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="name serif">Phạm Tấn Tài — Tyler</div>
+  <div class="ph">Châu Đốc, An Giang · 02.01.1989 · Du lịch · Đào tạo · AI</div>
+</footer>
+
+<script>
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
